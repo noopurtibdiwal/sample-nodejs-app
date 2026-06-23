@@ -4,7 +4,10 @@ FROM node:18-alpine
 WORKDIR /app
 
 # copy package files
-COPY package*.json .
+COPY package*.json ./
+
+#install dependencies 
+RUN npm install
 
 # copy application file
 COPY server.js ./
