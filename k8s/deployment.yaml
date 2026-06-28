@@ -19,7 +19,7 @@ spec:
         - containerPort: 3000
         env:
         - name: test
-          value: "testing"
+          value: "testing123"
         - name: NODE_ENV
           value: "production"
         - name: PORT
