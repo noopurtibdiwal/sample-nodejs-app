@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nodejs-container
-        image: noopur0507/sample-nodejs-app:invalid
+        image: noopur0507/sample-nodejs-app:latest
         ports:
         - containerPort: 3000
         env:
