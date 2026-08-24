@@ -4,7 +4,7 @@ metadata:
   name: sample-app-canary
 spec:
   selector:
-    app: sample-app-canary
+    app: sample-nodejs-app-canary
   ports:
   - port: 80
     targetPort: 3000

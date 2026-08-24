@@ -1,16 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-app-canary
+  name: sample-nodejs-app-stable
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: sample-app-canary
+      app: sample-nodejs-app-canary
+      track: stable
   template:
     metadata:
       labels:
-        app: sample-app-canary
+        app: sample-nodejs-app-canary
+        track: stable
     spec:
       containers:
       - name: nodejs-container
