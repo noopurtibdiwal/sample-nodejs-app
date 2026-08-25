@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nodejs-container
-        image: <+artifacts.image>
+        image: <+artifact.image>
         ports:
         - containerPort: 3000
         env:
