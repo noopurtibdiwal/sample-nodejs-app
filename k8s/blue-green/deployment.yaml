@@ -1,22 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-nodejs-app-stable
+  name: sample-nodejs-app-bg
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: sample-nodejs-app-canary
-      track: stable
+      app: sample-nodejs-app-bg
   template:
     metadata:
       labels:
-        app: sample-nodejs-app-canary
-        track: stable
+        app: sample-nodejs-app-bg
     spec:
       containers:
       - name: nodejs-container
-        image: noopur0507/sample-nodejs-app:v1
+        image: noopur0507/sample-nodejs-app:latest
         ports:
         - containerPort: 3000
         env:

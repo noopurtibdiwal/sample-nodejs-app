@@ -4,8 +4,7 @@ metadata:
   name: sample-nodejs-app-bg
 spec:
   selector:
-    app: sample-nodejs-app
-    type: green
+    app: sample-nodejs-app-bg
   ports:
   - port: 80
     targetPort: 3000

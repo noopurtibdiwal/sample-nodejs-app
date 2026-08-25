@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sample-app-canary
+  name: sample-nodejs-app-c
 spec:
   selector:
-    app: sample-nodejs-app-canary
+    app: sample-nodejs-app-c
   ports:
   - port: 80
     targetPort: 3000
