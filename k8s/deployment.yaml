@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: sample-nodejs-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: sample-nodejs-app
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nodejs-container
-        image: noopur0507/sample-nodejs-app:latest
+        image: <+artifacts.primary.image>
         ports:
         - containerPort: 3000
         env:
