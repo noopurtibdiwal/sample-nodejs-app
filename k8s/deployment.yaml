@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nodejs-container
-        image: <+artifact.imagePath>:<+artifact.tag>
+        image: noopur0507/sample-nodejs-app:<+artifact.tag>
         ports:
         - containerPort: 3000
         env:
