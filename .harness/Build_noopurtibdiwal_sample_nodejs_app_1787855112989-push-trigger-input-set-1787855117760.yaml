@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_noopurtibdiwal_sample_nodejs_app_1787855112989-push-trigger-input-set
+  identifier: Build_noopurtibdiwal_sample_nodejs_app_1787855112989pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: bootcampcinoopur
+  pipeline:
+    identifier: Build_noopurtibdiwal_sample_nodejs_app_1787855112989
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
