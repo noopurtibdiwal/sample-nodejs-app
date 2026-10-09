@@ -1,0 +1,53 @@
+template:
+  name: aws_lambda_deploy
+  identifier: aws_lambda_deploy
+  versionLabel: v1
+  type: Stage
+  spec:
+    type: Deployment
+    spec:
+      deploymentType: AwsLambda
+      service:
+        serviceRef: <+input>
+        serviceInputs: <+input>
+      environment:
+        environmentRef: <+input>
+        deployToAll: false
+        infrastructureDefinitions: <+input>
+      execution:
+        steps:
+          - step:
+              type: AwsLambdaDeploy
+              name: Deploy Lambda
+              identifier: Deploy_Lambda
+              spec: {}
+              timeout: 10m
+          - step:
+              type: ShellScript
+              name: Print Variable
+              identifier: Print_Variable
+              spec:
+                shell: Bash
+                onDelegate: true
+                source:
+                  type: Inline
+                  spec:
+                    script: echo "Branch is <+stage.variables.target_branch>"
+              timeout: 10m
+        rollbackSteps:
+          - step:
+              type: AwsLambdaRollback
+              name: Rollback Lambda
+              identifier: Rollback_Lambda
+              spec: {}
+              timeout: 10m
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: StageRollback
+    variables:
+      - name: target_branch
+        type: String
+        value: <+input>
