@@ -10,22 +10,9 @@ template:
       - stage:
           name: Stage A
           identifier: Stage_A
-          description: ""
           type: CI
           spec:
             cloneCodebase: false
-            caching:
-              enabled: false
-              override: true
-              paths: []
-            buildIntelligence:
-              enabled: false
-            platform:
-              os: Linux
-              arch: Amd64
-            runtime:
-              type: Cloud
-              spec: {}
             execution:
               steps:
                 - step:
@@ -33,28 +20,21 @@ template:
                     name: Step A
                     identifier: Step_A
                     spec:
-                      shell: Sh
+                      shell: Bash
                       command: echo "Stage A"
-                    description: Step A
-      - stage:
-          name: Stage B
-          identifier: Stage_B
-          description: ""
-          type: CI
-          spec:
-            cloneCodebase: false
-            caching:
-              enabled: false
-              override: true
-              paths: []
-            buildIntelligence:
-              enabled: false
             platform:
               os: Linux
               arch: Amd64
             runtime:
               type: Cloud
               spec: {}
+          description: ""
+      - stage:
+          name: Stage B
+          identifier: Stage_B
+          type: CI
+          spec:
+            cloneCodebase: false
             execution:
               steps:
                 - step:
@@ -62,28 +42,22 @@ template:
                     name: Step B
                     identifier: Step_B
                     spec:
-                      shell: Sh
+                      shell: Bash
                       command: echo "Stage B"
-                    description: Step B
-      - stage:
-          name: Stage C
-          identifier: Stage_C
-          description: ""
-          type: CI
-          spec:
-            cloneCodebase: false
-            caching:
-              enabled: false
-              override: true
-              paths: []
-            buildIntelligence:
-              enabled: false
             platform:
               os: Linux
               arch: Amd64
             runtime:
               type: Cloud
               spec: {}
+          dependsOn:
+            - Stage_A
+      - stage:
+          name: Stage C
+          identifier: Stage_C
+          type: CI
+          spec:
+            cloneCodebase: false
             execution:
               steps:
                 - step:
@@ -91,5 +65,13 @@ template:
                     name: Step C
                     identifier: Step_C
                     spec:
-                      shell: Sh
+                      shell: Bash
                       command: echo "Stage C"
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+          dependsOn:
+            - Stage_A
