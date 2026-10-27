@@ -15,11 +15,11 @@ template:
           spec:
             cloneCodebase: false
             caching:
-              enabled: true
+              enabled: false
               override: true
               paths: []
             buildIntelligence:
-              enabled: true
+              enabled: false
             platform:
               os: Linux
               arch: Amd64
