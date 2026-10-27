@@ -1,0 +1,57 @@
+pipeline:
+  name: dag_gh_src
+  identifier: dag_gh_src
+  projectIdentifier: noopurdev
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: A
+        identifier: A
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Wait
+                  name: wait
+                  identifier: wait
+                  spec:
+                    duration: 10s
+        tags: {}
+        dependsOn: []
+    - stage:
+        name: B
+        identifier: B
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Wait
+                  name: wait
+                  identifier: wait
+                  spec:
+                    duration: 10s
+        tags: {}
+        dependsOn: []
+    - stage:
+        name: C
+        identifier: C
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Wait
+                  name: wait
+                  identifier: wait
+                  spec:
+                    duration: 10s
+        tags: {}
+        dependsOn:
+          - A
+          - B
