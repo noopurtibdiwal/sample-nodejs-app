@@ -1,0 +1,77 @@
+template:
+  name: dag_based
+  identifier: dag_based
+  versionLabel: v1
+  type: Pipeline
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: Stage A
+          identifier: Stage_A
+          type: CI
+          spec:
+            cloneCodebase: false
+            execution:
+              steps:
+                - step:
+                    type: Run
+                    name: Step A
+                    identifier: Step_A
+                    spec:
+                      shell: Bash
+                      command: echo "Stage A"
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+          description: ""
+      - stage:
+          name: Stage B
+          identifier: Stage_B
+          type: CI
+          spec:
+            cloneCodebase: false
+            execution:
+              steps:
+                - step:
+                    type: Run
+                    name: Step B
+                    identifier: Step_B
+                    spec:
+                      shell: Bash
+                      command: echo "Stage B"
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+          dependsOn:
+            - Stage_A
+      - stage:
+          name: Stage C
+          identifier: Stage_C
+          type: CI
+          spec:
+            cloneCodebase: false
+            execution:
+              steps:
+                - step:
+                    type: Run
+                    name: Step C
+                    identifier: Step_C
+                    spec:
+                      shell: Bash
+                      command: echo "Stage C"
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+          dependsOn:
+            - Stage_A
