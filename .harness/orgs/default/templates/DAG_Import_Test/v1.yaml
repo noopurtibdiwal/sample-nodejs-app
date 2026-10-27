@@ -1,0 +1,94 @@
+template:
+  name: DAG Import Test
+  identifier: DAG_Import_Test
+  versionLabel: v1
+  type: Pipeline
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: Stage A
+          identifier: Stage_A
+          description: ""
+          type: CI
+          spec:
+            cloneCodebase: false
+            caching:
+              enabled: true
+              override: true
+              paths: []
+            buildIntelligence:
+              enabled: true
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+            execution:
+              steps:
+                - step:
+                    type: Run
+                    name: Step A
+                    identifier: Step_A
+                    spec:
+                      shell: Sh
+                      command: echo "Stage A"
+                    description: Step A
+      - stage:
+          name: Stage B
+          identifier: Stage_B
+          description: ""
+          type: CI
+          spec:
+            cloneCodebase: false
+            caching:
+              enabled: true
+              override: true
+              paths: []
+            buildIntelligence:
+              enabled: true
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+            execution:
+              steps:
+                - step:
+                    type: Run
+                    name: Step B
+                    identifier: Step_B
+                    spec:
+                      shell: Sh
+                      command: echo "Stage B"
+                    description: Step B
+      - stage:
+          name: Stage C
+          identifier: Stage_C
+          description: ""
+          type: CI
+          spec:
+            cloneCodebase: false
+            caching:
+              enabled: true
+              override: true
+            buildIntelligence:
+              enabled: true
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+            execution:
+              steps:
+                - step:
+                    type: Run
+                    name: Step C
+                    identifier: Step_C
+                    spec:
+                      shell: Sh
+                      command: echo "Stage C"
