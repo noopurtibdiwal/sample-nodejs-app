@@ -4,6 +4,12 @@ pipeline:
   projectIdentifier: noopurdev
   orgIdentifier: default
   tags: {}
+  variables:
+    - name: TEMP_INPUT
+      type: String
+      description: Temporary runtime input used to test importing input sets from Git
+      required: false
+      value: <+input>.default("temp")
   stages:
     - stage:
         name: A
@@ -18,7 +24,7 @@ pipeline:
                   name: wait
                   identifier: wait
                   spec:
-                    duration: 10s
+                    duration: <+input>.default(10s)
         tags: {}
         dependsOn: []
     - stage:
@@ -34,7 +40,7 @@ pipeline:
                   name: wait
                   identifier: wait
                   spec:
-                    duration: 10s
+                    duration: <+input>.default(10s)
         tags: {}
         dependsOn: []
     - stage:
@@ -50,7 +56,7 @@ pipeline:
                   name: wait
                   identifier: wait
                   spec:
-                    duration: 10s
+                    duration: <+input>.default(10s)
         tags: {}
         dependsOn:
           - A
