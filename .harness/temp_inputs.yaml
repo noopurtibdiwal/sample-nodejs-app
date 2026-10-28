@@ -1,0 +1,45 @@
+inputSet:
+  name: temp_inputs
+  identifier: temp_inputs
+  orgIdentifier: default
+  projectIdentifier: noopurdev
+  pipeline:
+    identifier: dag_gh_src
+    variables:
+      - name: TEMP_INPUT
+        type: String
+        value: from-git
+    stages:
+      - stage:
+          identifier: A
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: wait
+                    type: Wait
+                    spec:
+                      duration: 5s
+      - stage:
+          identifier: B
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: wait
+                    type: Wait
+                    spec:
+                      duration: 5s
+      - stage:
+          identifier: C
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: wait
+                    type: Wait
+                    spec:
+                      duration: 5s
