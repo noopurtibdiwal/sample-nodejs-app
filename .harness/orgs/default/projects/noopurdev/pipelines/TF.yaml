@@ -1,0 +1,71 @@
+pipeline:
+  name: TF
+  identifier: TF
+  projectIdentifier: noopurdev
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: TF
+        identifier: TF
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Ssh
+          service:
+            serviceRef: <+input>
+            serviceInputs: <+input>
+          environment:
+            environmentRef: <+input>
+            deployToAll: false
+            environmentInputs: <+input>
+            serviceOverrideInputs: <+input>
+            infrastructureDefinitions: <+input>
+          execution:
+            steps:
+              - step:
+                  name: Deploy
+                  identifier: Deploy
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+                  template:
+                    templateRef: account.Default_Install_Jar_Bash
+                    templateInputs:
+                      type: Command
+                      spec:
+                        environmentVariables:
+                          - name: DestinationDirectory
+                            type: String
+                            value: $HOME/<+service.name>/<+env.name>
+                          - name: WorkingDirectory
+                            type: String
+                            value: $HOME/<+service.name>/<+env.name>/tomcat/bin
+            rollbackSteps:
+              - step:
+                  name: Rollback
+                  identifier: Deploy
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+                  template:
+                    templateRef: account.Default_Install_Jar_Bash
+                    templateInputs:
+                      type: Command
+                      spec:
+                        environmentVariables:
+                          - name: DestinationDirectory
+                            type: String
+                            value: $HOME/<+service.name>/<+env.name>
+                          - name: WorkingDirectory
+                            type: String
+                            value: $HOME/<+service.name>/<+env.name>/tomcat/bin
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
