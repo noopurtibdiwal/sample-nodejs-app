@@ -1,0 +1,30 @@
+pipeline:
+  name: TF
+  identifier: TF
+  projectIdentifier: noopurdev
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: TF
+        identifier: TF
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Echo
+                  identifier: Echo
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "TF remote pipeline"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
