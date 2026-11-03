@@ -1,0 +1,14 @@
+pipeline:
+  id: v3
+  name: v3
+  description: Hello World pipeline that prints a greeting.
+  tags:
+    ai_generated: ""
+  stages:
+    - id: hello_stage
+      name: Hello Stage
+      steps:
+        - id: hello_world
+          name: Hello World
+          run:
+            script: echo "Hello World"
