@@ -3,7 +3,8 @@ template:
   identifier: tag_test_remote_git
   versionLabel: v1
   type: Step
-  tags: {}
+  tags:
+    team: platform
   spec:
     type: ShellScript
     timeout: 10m
