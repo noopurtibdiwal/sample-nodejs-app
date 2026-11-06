@@ -1,0 +1,18 @@
+template:
+  name: tag test remote git 2
+  identifier: tag_test_remote_git_2
+  versionLabel: v1
+  type: Step
+  tags: {}
+  spec:
+    type: ShellScript
+    timeout: 10m
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: echo "tag repro 2"
+      environmentVariables: []
+      outputVariables: []
