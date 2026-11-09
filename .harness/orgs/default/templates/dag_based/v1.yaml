@@ -4,7 +4,8 @@ template:
   versionLabel: v1
   type: Pipeline
   orgIdentifier: default
-  tags: {}
+  tags:
+    env: qa
   spec:
     stages:
       - stage:
