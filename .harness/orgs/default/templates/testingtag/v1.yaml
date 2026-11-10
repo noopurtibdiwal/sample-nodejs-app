@@ -7,7 +7,8 @@ template:
   tags:
     testing: ui-edit
     enq: QAing
-    issue : dev
+    issue : deving
+    issue2: testing
   spec:
     stages:
       - stage:
