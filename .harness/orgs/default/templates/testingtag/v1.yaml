@@ -6,7 +6,8 @@ template:
   orgIdentifier: default
   tags:
     testing: ui-edit
-    enq: QA
+    enq: QAing
+    issue : dev
   spec:
     stages:
       - stage:
