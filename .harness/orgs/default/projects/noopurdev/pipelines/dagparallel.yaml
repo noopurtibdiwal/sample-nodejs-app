@@ -1,0 +1,85 @@
+pipeline:
+  name: dag-parallel
+  identifier: dagparallel
+  projectIdentifier: noopurdev
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Unit_Test_and_SAST
+        identifier: Unit_Test_and_SAST
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: run_unit_test_sast
+                  identifier: run_unit_test_sast
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |2-
+                                                    echo "Unit_Test_and_SAST started: $(date -u +%T)"
+                                                    sleep 60
+                                                    echo "Unit_Test_and_SAST finished: $(date -u +%T)"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+    - stage:
+        name: Approval
+        identifier: Approval
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: run_approval
+                  identifier: run_approval
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |2-
+                                                    echo "Approval started: $(date -u +%T)"
+                                                    sleep 60
+                                                    echo "Approval finished: $(date -u +%T)"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+    - stage:
+        name: Build_and_Deploy
+        identifier: Build_and_Deploy
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: run_build_deploy
+                  identifier: run_build_deploy
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |2-
+                                                    echo "Build_and_Deploy started: $(date -u +%T)"
+                                                    sleep 60
+                                                    echo "Build_and_Deploy finished: $(date -u +%T)"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
